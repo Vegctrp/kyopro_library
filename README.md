@@ -3,4 +3,10 @@
 
 ## DataSets_Queries
 - UnionFindTree
-- 
+- WeightedUnionFindTree
+- SegmentTree
+
+
+## NumberTheory
+- PrimeFactor
+- modpow
