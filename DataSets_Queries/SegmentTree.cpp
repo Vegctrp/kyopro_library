@@ -27,9 +27,14 @@ template <typename Monoid=ll> class SegmentTree {
     void build(){  // 全てのノードを再計算
         for(ll k=size-1; k>0; k--) segment[k] = Monoid_calc(segment[k*2], segment[k*2+1]);
     }
-    void update(ll k, Monoid a){
+    void update_replace(ll k, Monoid a){
         k += size;
         segment[k] = a;
+        while(k >>= 1) segment[k] = Monoid_calc(segment[k*2], segment[k*2+1]);
+    }
+    void update_add(ll k, Monoid a){
+        k += size;
+        segment[k] = Monoid_calc(segment[k], a);
         while(k >>= 1) segment[k] = Monoid_calc(segment[k*2], segment[k*2+1]);
     }
     Monoid query(ll a, ll b){ // [a, b)の演算結果
