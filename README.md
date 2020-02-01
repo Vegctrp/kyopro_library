@@ -10,3 +10,5 @@
 ## NumberTheory
 - PrimeFactor
 - modpow
+- EulersPhiFunction
+- gcd, lcm, extended-gcd
