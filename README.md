@@ -5,6 +5,7 @@
 - UnionFindTree
 - WeightedUnionFindTree
 - SegmentTree
+- DelayedSegmentTree
 
 
 ## NumberTheory
@@ -12,3 +13,4 @@
 - modpow
 - EulersPhiFunction
 - gcd, lcm, extended-gcd
+- bigint
