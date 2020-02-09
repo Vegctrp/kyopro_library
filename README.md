@@ -7,6 +7,7 @@
 - SegmentTree
 - DelayedSegmentTree
 - syakutori (尺取り法)
+- slide_minimum
 
 
 ## NumberTheory
