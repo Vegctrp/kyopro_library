@@ -6,6 +6,7 @@
 - WeightedUnionFindTree
 - SegmentTree
 - DelayedSegmentTree
+- syakutori (尺取り法)
 
 
 ## NumberTheory
