@@ -12,7 +12,7 @@ class Graph{
     } Edge;
 
     bool isDirected;
-    ll INF = 1 << 30;
+    ll INF = 1LL << 62;
     ll v; // 頂点数
     std::vector<Edge> edges;  // 辺のリスト
     std::vector<std::vector<std::pair<ll,ll>>> list;  // 隣接リスト

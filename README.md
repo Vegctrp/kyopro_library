@@ -20,3 +20,6 @@
 - EulersPhiFunction
 - gcd, lcm, extended-gcd
 - bigint
+
+## misc
+- GrayCodeGenerator
