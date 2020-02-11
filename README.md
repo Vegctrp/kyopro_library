@@ -8,7 +8,11 @@
 - DelayedSegmentTree
 - syakutori (尺取り法)
 - slide_minimum
+- Rectangles (2次元imos法)
 
+## GraphTheory
+- Dijkstra
+- BellmanFord
 
 ## NumberTheory
 - PrimeFactor
