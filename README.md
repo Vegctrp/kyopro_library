@@ -11,8 +11,11 @@
 - Rectangles (2次元imos法)
 
 ## GraphTheory
-- Dijkstra
-- BellmanFord
+- Dijkstra      (単一始点最短経路、負辺なし)
+- BellmanFord   (単一始点最短経路、負辺あり)
+- WarshallFloyd (全点間最短経路、負辺あり)
+- Kruskal, Prim (最小全域木)
+- lowlink       (橋・連結点)
 
 ## NumberTheory
 - PrimeFactor
