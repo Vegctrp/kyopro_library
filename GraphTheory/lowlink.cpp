@@ -10,7 +10,7 @@ class lowlink{
     public:
     Graph G; // 無向グラフ
     std::vector<ll> used, ord, low;
-    std::vector<ll> articulation; // 連結点
+    std::vector<ll> articulation; // 関節点
     std::vector<Graph::Edge> bridge; // 橋
 
     lowlink(Graph G) : G(G){

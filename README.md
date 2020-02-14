@@ -16,6 +16,7 @@
 - WarshallFloyd (全点間最短経路、負辺あり)
 - Kruskal, Prim (最小全域木)
 - lowlink       (橋・連結点)
+- StronglyConnectedComponents (強連結成分分解)
 
 ## NumberTheory
 - PrimeFactor
