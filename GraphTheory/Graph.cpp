@@ -17,7 +17,8 @@ class Graph{
     std::vector<Edge> edges;  // 辺のリスト
     std::vector<std::vector<std::pair<ll,ll>>> list;  // 隣接リスト
     //std::vector<std::vector<ll>> matrix; // 隣接行列
-
+    
+    Graph() : isDirected(false){ init(0); }
     Graph(ll n, bool isDirected=false) : isDirected(isDirected) { init(n); }
     void init(ll n){
         v=n;
