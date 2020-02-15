@@ -27,6 +27,9 @@ template <typename Monoid=ll> class SegmentTree {
     void build(){  // 全てのノードを再計算
         for(ll k=size-1; k>0; k--) segment[k] = Monoid_calc(segment[k*2], segment[k*2+1]);
     }
+    void build(std::vector<Monoid> v){
+        for(ll k=0; k<size; k++)segment[k+size]=v[k]; build();
+    }
     void update_replace(ll k, Monoid a){
         k += size;
         segment[k] = a;
@@ -50,3 +53,14 @@ template <typename Monoid=ll> class SegmentTree {
         return segment[k+size];
     }
 };
+
+
+int main(){
+    int n; // 数列の長さ
+
+    // Range Minimum Query (一点更新、範囲最小値)
+    SegmentTree<ll> st(n, 1LL<<62, [](ll a, ll b){return std::min(a,b);});
+
+    // Range Sum Query (一点加算、範囲和)
+    SegmentTree<ll> st(n, 0, [](ll a, ll b){return a+b;});
+}

@@ -79,3 +79,81 @@ template <typename Mq=ll, typename Mo=std::pair<ll, ll>> class DelayedSegmentTre
         return segment[k+size];
     }
 };
+
+
+
+int main(){
+    int n; // 数列の長さ
+    
+    // Range Update Query (範囲更新、一点出力)
+    DelayedSegmentTree<ll, std::pair<ll, ll>> dst(
+        n, 2147483647, std::make_pair(0, 0),
+        [](ll a, ll b){return a+b-2147483647;},
+        [](ll a, std::pair<ll, ll> b){return b.first>0 ? b.second : a;},
+        [](std::pair<ll, ll> a, std::pair<ll, ll> b){
+            return a.first>b.first ? std::make_pair(a.first, a.second) : std::make_pair(b.first, b.second);
+        },
+        [](std::pair<ll, ll> a, ll b){
+            return std::make_pair(a.first, a.second);
+        });
+
+    // Range Add Query (範囲加算、一点出力)
+    DelayedSegmentTree<ll, std::pair<ll, ll>> dst(
+        n, 0, std::make_pair(0, 0),
+        [](ll a, ll b){return a+b;},
+        [](ll a, std::pair<ll, ll> b){return b.second+a;},
+        [](std::pair<ll, ll> a, std::pair<ll, ll> b){
+            return std::make_pair(std::max(a.first, b.first), a.second+b.second);
+        },
+        [](std::pair<ll, ll> a, ll b){
+            return std::make_pair(a.first, a.second*b);
+        });
+
+    // RMQ and RUQ (範囲更新、範囲最小値)
+    DelayedSegmentTree<ll, std::pair<ll, ll>> dst(
+        n, 2147483647, std::make_pair(0, 0),
+        [](ll a, ll b){return std::min(a,b);},
+        [](ll a, std::pair<ll, ll> b){return b.first>0 ? b.second : a;},
+        [](std::pair<ll, ll> a, std::pair<ll, ll> b){
+            return a.first>b.first ? std::make_pair(a.first, a.second) : std::make_pair(b.first, b.second);
+        },
+        [](std::pair<ll, ll> a, ll b){
+            return std::make_pair(a.first, a.second);
+        });
+
+    // RSQ and RAQ (範囲加算、範囲和)
+    DelayedSegmentTree<ll, std::pair<ll, ll>> dst(
+        n, 0, std::make_pair(0, 0),
+        [](ll a, ll b){return a+b;},
+        [](ll a, std::pair<ll, ll> b){return a+b.second;},
+        [](std::pair<ll, ll> a, std::pair<ll, ll> b){
+            return std::make_pair(std::max(a.first, b.first), a.second+b.second);
+        },
+        [](std::pair<ll, ll> a, ll b){
+            return std::make_pair(a.first, a.second*b);
+        });
+
+    // RMQ and RAQ (範囲加算、範囲最小値)
+    DelayedSegmentTree<ll, std::pair<ll, ll>> dst(
+        n, 2147483647, std::make_pair(0, 0),
+        [](ll a, ll b){return std::min(a,b);},
+        [](ll a, std::pair<ll, ll> b){return a+b.second;},
+        [](std::pair<ll, ll> a, std::pair<ll, ll> b){
+            return std::make_pair(std::max(a.first, b.first), a.second+b.second);
+        },
+        [](std::pair<ll, ll> a, ll b){
+            return std::make_pair(a.first, a.second);
+        });
+    
+    // RSQ and RUQ (範囲更新、範囲和)
+    DelayedSegmentTree<ll, std::pair<ll, ll>> dst(
+        n, 0, std::make_pair(0, 0),
+        [](ll a, ll b){return a+b;},
+        [](ll a, std::pair<ll, ll> b){return b.first>0 ? b.second : a;},
+        [](std::pair<ll, ll> a, std::pair<ll, ll> b){
+            return a.first>b.first ? std::make_pair(a.first, a.second) : std::make_pair(b.first, b.second);
+        },
+        [](std::pair<ll, ll> a, ll b){
+            return std::make_pair(a.first, a.second*b);
+        });
+}
