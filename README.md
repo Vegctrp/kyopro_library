@@ -19,7 +19,9 @@
 - StronglyConnectedComponents (強連結成分分解)
 - Diameter, Height (無向木の直径、各点の高さ)
 - LowestCommonAncestor (根付き木の最小共通祖先)
-- FordFulkerson  (最大流)
+
+- FlowGraph
+- FordFulkerson, Dinic  (最大流)
 
 ## NumberTheory
 - PrimeFactor

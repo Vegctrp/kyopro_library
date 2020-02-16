@@ -7,6 +7,41 @@ using namespace std;
 typedef long long ll;
 #define REP(i,n) for(int i=0;i<(int)(n);i++)
 
+// use FlowGraph
+template<typename FLOWTYPE> class FordFulkerson{ // 最大流 maxO(maxflow*|E|)
+    public:
+    FlowGraph<FLOWTYPE,ll> G;
+    std::vector<bool> visited;
+    FordFulkerson(FlowGraph<ll,ll> G) : G(G){}
+    FLOWTYPE dfs(ll v, ll t, FLOWTYPE fl){
+        if(v==t) return fl;
+        visited[v] = true;
+        for(ll i=0; i<G.list[v].size(); i++){
+            FlowGraph<ll,ll>::Edge e = G.edges[G.list[v][i]];
+            if(!visited[e.to] && e.cap>0){  // FLOWTYPE > FLOWTYPE
+                FLOWTYPE d = dfs(e.to, t, std::min(fl, e.cap));  // std::min(FLOWTYPE, FLOWTYPE)
+                if(d > 0){  // FLOWTYPE > FLOWTYPE
+                    G.edges[G.list[v][i]].cap -= d;   // FLOWTYPE - FLOWTYPE
+                    G.edges[G.list[e.to][e.tp]].cap += d;  // FLOWTYPE + FLOWTYPE
+                    return d;
+                }
+            }
+        }
+        return 0;
+    }
+    FLOWTYPE max_flow(ll s, ll t){
+        FLOWTYPE flow = 0;
+        while(true){
+            visited.assign(G.v, false);
+            FLOWTYPE f = dfs(s,t,1LL<<62);
+            if(f==0)break;   // FLOWTYPE==0
+            flow += f;  // FLOWTYPE + FLOWTYPE
+        }
+        return flow;
+    }
+};
+
+// use Graph
 class FordFulkerson{ // 最大流 maxO(maxflow*|E|)
     public:
     typedef struct El{
