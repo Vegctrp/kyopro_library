@@ -19,9 +19,20 @@ void Com_init(){ //##O(MAX)##
         finv[i] = finv[i-1] * inv[i] % mod;
     }
 }
-long long Combination(int n, int k){ //calc nCk, ##O(1)##
+long long Combination(int n, int k){ //calc nCk, max=n, ##O(1)##
     if(n<k || (n<0||k<0))return 0;
     return fac[n] * (finv[k] * finv[n-k] % mod) % mod;
+}
+long long Combination(int n, int k){ //calc nCk, max=k, ##O(k)##
+    if(n<k || (n<0||k<0))return 0;
+    ll ans = 1;
+    for(ll i=1; i<=k; i++){
+        ans *= i+n-k;
+        ans %= mod;
+        ans *= inv[i];
+        ans %= mod;
+    }
+    return ans%mod;
 }
 //########################################################
 
