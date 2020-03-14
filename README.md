@@ -31,6 +31,13 @@
 - EulersPhiFunction
 - gcd, lcm, extended-gcd
 - bigint
+- modint
+- cmbs
+
+## DPs
+- LevenshteinDistance (レーベンシュタイン距離/編集距離)
+- LIS (最長増加部分列)
 
 ## misc
 - GrayCodeGenerator
+- bisearch
